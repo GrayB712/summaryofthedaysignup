@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<center>
+<head>
+	<title>Send User Input to Server</title>
+</head>
+<body>
+	<form id="input-form" onsubmit="submitForm(event)">
+		<input placeholder="Enter your name here" style="font-size:25px; width:600px; height:60px; border-radius:5px" type="text" id="name" name="name"><br><br>
+		<input style="width:90px; height:40px; color:white; border:none; border-radius:5px; background:darkblue" type="submit" value="Sign Up">
+	</form>
+
+	<script>
+		function submitForm(event) {
+			event.preventDefault();
+
+			const form = document.getElementById('input-form');
+			const formData = new FormData(form);
+
+                        fetch('', {
+				
+		function submitForm(event) {
+			event.preventDefault();
+
+			const name = document.getElementById('name').value;
+
+			fetch('https://pentasyllabic-nozzl.000webhostapp.com/save_comment.php', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ name })
+			})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				//window.location.href = "https://google.com/";
+			})
+			.catch(error => console.error(error));
+		}
+	</script>
+</body>
+</center>
+</html>
