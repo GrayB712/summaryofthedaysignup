@@ -18,18 +18,27 @@
 
 			fetch('https://pentasyllabic-nozzl.000webhostapp.com/save_comment.php', {
 				method: 'POST',
+				mode: "cors", // no-cors, *cors, same-origin
+                                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                                credentials: "same-origin", // include, *same-origin, omit
 				headers: {
-					'Content-Type': 'application/json'
+					Content-Type": "application/json",
 				},
-				body: JSON.stringify({ name })
+				redirect: "follow", // manual, *follow, error
+    				referrerPolicy: "no-referrer",
+				body: JSON.stringify({ name }),
+			});
+			.then(response => {
+				return response.json())
 			})
-			.then(response => response.json())
 			.then(data => {
 				console.log(data);
 				window.location.href = "https://google.com/";
 			})
 			.catch(error => console.error(error));
 		}
+		postData("https://google.com/", { answer: 42 }).then((data) => {
+  		console.log(data);
 	</script>
 </body>
 </center>
